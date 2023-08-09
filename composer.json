@@ -47,7 +47,8 @@
         "stan": "phpstan analyse",
         "test": "phpunit --colors=always",
         "server:start": "./bin/cake server -p 63342",
-        "migration:create": "./bin/cake bake migration"
+        "migration:create": "./bin/cake bake migration",
+        "migration:run": "./bin/cake migrations migrate"
     },
     "prefer-stable": true,
     "config": {

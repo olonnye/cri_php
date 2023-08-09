@@ -44,6 +44,41 @@ return static function (RouteBuilder $routes) {
      */
     $routes->setRouteClass(DashedRoute::class);
 
+    $routes->prefix("api", function (RouteBuilder $builder) {
+
+        $builder->setExtensions(["json"]);
+        /**
+         * Customer Operations
+         */
+        $builder->connect("/add-customer", ["controller" => "Customer", "action" => "addCustomer"]);
+
+        $builder->connect("/list-customers", ["controller" => "Customer", "action" => "listCustomers"]);
+
+        $builder->connect("/update-customer/{id}", ["controller" => "Customer", "action" => "updateCustomer"])->setPass(["id"]);
+
+        $builder->connect("/delete-customer/{id}", ["controller" => "Customer", "action" => "deleteCustomer"])->setPass(["id"]);
+        /**
+         * Description Operations
+         */
+        $builder->connect("/add-description", ["controller" => "Description", "action" => "addDescription"]);
+
+        $builder->connect("/list-descriptions", ["controller" => "Description", "action" => "listDescriptions"]);
+
+        $builder->connect("/update-description/{id}", ["controller" => "Description", "action" => "updateDescription"])->setPass(["id"]);
+
+        $builder->connect("/delete-description/{id}", ["controller" => "Description", "action" => "deleteDescription"])->setPass(["id"]);
+        /**
+         * Kit Operations
+         */
+        $builder->connect("/add-kit", ["controller" => "Kit", "action" => "addKit"]);
+
+        $builder->connect("/list-kits", ["controller" => "Kit", "action" => "listKits"]);
+
+        $builder->connect("/update-kit/{id}", ["controller" => "Kit", "action" => "updateKit"])->setPass(["id"]);
+
+        $builder->connect("/delete-kit/{id}", ["controller" => "Kit", "action" => "deleteKit"])->setPass(["id"]);
+    });
+
     $routes->scope('/', function (RouteBuilder $builder) {
         /*
          * Here, we are connecting '/' (base path) to a controller called 'Pages',
@@ -73,19 +108,4 @@ return static function (RouteBuilder $routes) {
         $builder->fallbacks();
     });
 
-    /*
-     * If you need a different set of middleware or none at all,
-     * open new scope and define routes there.
-     *
-     * ```
-     * $routes->scope('/api', function (RouteBuilder $builder) {
-     *     // No $builder->applyMiddleware() here.
-     *
-     *     // Parse specified extensions from URLs
-     *     // $builder->setExtensions(['json', 'xml']);
-     *
-     *     // Connect API actions here.
-     * });
-     * ```
-     */
 };

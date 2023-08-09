@@ -36,8 +36,6 @@
         }
     },
     "scripts": {
-        "post-install-cmd": "App\\Console\\Installer::postInstall",
-        "post-create-project-cmd": "App\\Console\\Installer::postInstall",
         "check": [
             "@test",
             "@cs-check"
@@ -47,7 +45,12 @@
         "stan": "phpstan analyse",
         "test": "phpunit --colors=always",
         "server:start": "./bin/cake server -p 63342",
-        "migration:create": "./bin/cake bake migration"
+        "migration:create": "./bin/cake bake migration",
+        "migration:run": "./bin/cake migrations migrate",
+        "migration:rollback": "./bin/cake migrations rollback",
+        "seed:create": "./bin/cake bake seed",
+        "seed:run:one": "./bin/cake migrations seed --seed",
+        "seed:run:all": "./bin/cake migrations seed --seed KitSeed --seed CustomerSeed --seed DescriptionSeed"
     },
     "prefer-stable": true,
     "config": {

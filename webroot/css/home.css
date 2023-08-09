@@ -37,6 +37,15 @@ hr {
     margin-bottom: 35px;
 }
 
+table {
+    justify-content: center;
+}
+
+table tbody {
+    display: table-row-group;
+    width: 100%;
+}
+
 .text-center {
     text-align: center;
 }
@@ -72,4 +81,54 @@ hr {
 }
 #url-rewriting-warning {
     display: none;
+}
+
+.customer-display-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 2rem;
+    min-height: 30vh;
+    min-width: 100%;
+}
+
+.kit-display-container {
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.customer-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.wrap-text-content {
+    white-space: break-spaces;
+    overflow-wrap: anywhere;
+}
+
+.customer-info-container > .wrap-text-content {
+    margin-left: 0.5rem;
+}
+
+.enable-click {
+    cursor: pointer;
+}
+
+.column {
+    margin: 1rem;
+}
+
+@media screen and (max-width: 640px) {
+    table {
+        display: inline-table;
+    }
 }

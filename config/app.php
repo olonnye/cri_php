@@ -330,10 +330,10 @@ return [
              * which is the recommended value in production environments
              */
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
-            'host' => 'localhost',
-            'port' => '3306',
             'username' => 'root',
-            'database' => 'test',
+            'host' => '127.0.0.1',
+            'port' => '3306',
+            'database' => 'cri',
         ],
 
         /*

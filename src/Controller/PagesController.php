@@ -21,6 +21,7 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use App\Controller\Api\CustomerController;
 
 /**
  * Static content controller
@@ -59,7 +60,9 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
+        $customersList = $this->fetchCustomersFromApi();
         $this->set(compact('page', 'subpage'));
+        $this->set('customersList', $customersList);
 
         try {
             return $this->render(implode('/', $path));
@@ -69,5 +72,14 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+    }
+
+    private function fetchCustomersFromApi(): mixed
+    {
+        $api = new CustomerController();
+
+        $response = $api->findAllCustomers();
+
+        return json_decode($response, true);
     }
 }
